@@ -162,11 +162,17 @@ function generateSenderHTML(roomName) {
           const peerConnection = new RTCPeerConnection({
           iceTransportPolicy: "relay", 
             iceServers: [  
+            
              {
                urls: "turn:relay1.expressturn.com:3478?transport=tcp",
-  username: "efS8B4ILUA76O6XJJF",
-  credential: "lX89RTLsl9wxmFwU"
-        }
+                username: "efS8B4ILUA76O6XJJF",
+                credential: "lX89RTLsl9wxmFwU"
+              },
+              {
+               urls: "turn:relay1.expressturn.com:5349",
+                username: "efS8B4ILUA76O6XJJF",
+                credential: "lX89RTLsl9wxmFwU"
+              }
             ]
           });
 
@@ -340,11 +346,17 @@ function generateViewerHTML(roomName) {
             peerConnection = new RTCPeerConnection({
               iceTransportPolicy: "relay", 
               iceServers: [
+
                 {
              urls: "turn:relay1.expressturn.com:3478?transport=tcp",
   username: "efS8B4ILUA76O6XJJF",
   credential: "lX89RTLsl9wxmFwU"
-        }
+        },
+        {
+               urls: "turn:relay1.expressturn.com:5349",
+                username: "efS8B4ILUA76O6XJJF",
+                credential: "lX89RTLsl9wxmFwU"
+              }
                
                  
               ],
