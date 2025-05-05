@@ -160,7 +160,7 @@ function generateSenderHTML(roomName) {
           if (!stream) return;
           
           const peerConnection = new RTCPeerConnection({
-         
+            iceTransportPolicy: "relay", 
             iceServers: [  
             
             {
@@ -358,7 +358,7 @@ function generateViewerHTML(roomName) {
   
           function setupPeerConnection() {
             peerConnection = new RTCPeerConnection({
-             
+              iceTransportPolicy: "relay", 
               iceServers: [
         
 
