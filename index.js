@@ -397,6 +397,10 @@ peerConnection.addTransceiver("video", {
                 logToScreen("✅ Stream atribuída ao vídeo");
               }
             };
+
+            peerConnection.icecandidateerror = (error) => {
+              logToScreen("🔄 ICE candidate error: " + error);
+            };
   
             peerConnection.onicecandidate = ({ candidate }) => {
               if (candidate) {
