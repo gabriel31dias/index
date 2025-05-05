@@ -163,11 +163,17 @@ function generateSenderHTML(roomName) {
          
             iceServers: [  
             
-             {
-               urls: "turn:relay1.expressturn.com:3478",
-                username: "efS8B4ILUA76O6XJJF",
-                credential: "lX89RTLsl9wxmFwU"
-              }
+              { urls: "stun:stun.l.google.com:19302" },
+  {
+    urls: "turn:relay1.expressturn.com:443?transport=tcp",
+    username: "efS8B4ILUA76O6XJJF",
+    credential: "lX89RTLsl9wxmFwU"
+  },
+  {
+    urls: "turn:relay1.expressturn.com:80?transport=tcp",
+    username: "efS8B4ILUA76O6XJJF",
+    credential: "lX89RTLsl9wxmFwU"
+  }
             ]
           });
 
@@ -341,11 +347,19 @@ function generateViewerHTML(roomName) {
             peerConnection = new RTCPeerConnection({
              
               iceServers: [
-                {
-             urls: "turn:relay1.expressturn.com:3478?transport=tcp",
-  username: "efS8B4ILUA76O6XJJF",
-  credential: "lX89RTLsl9wxmFwU"
-        }
+        
+
+        { urls: "stun:stun.l.google.com:19302" },
+  {
+    urls: "turn:relay1.expressturn.com:443?transport=tcp",
+    username: "efS8B4ILUA76O6XJJF",
+    credential: "lX89RTLsl9wxmFwU"
+  },
+  {
+    urls: "turn:relay1.expressturn.com:80?transport=tcp",
+    username: "efS8B4ILUA76O6XJJF",
+    credential: "lX89RTLsl9wxmFwU"
+  }
                
                  
               ],
