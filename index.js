@@ -76,6 +76,14 @@ function generateSenderHTML(roomName) {
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
         const roomInfoEl = document.getElementById('roomInfo');
+
+        let iceServers = [];
+
+        fetch("https://dwwdwrr.metered.live/api/v1/turn/credentials?apiKey=bf6cccced9a030e2aad51ce29d00e30cb152")
+        .then(response => response.json())
+        .then(data => {
+          iceServers = data;
+        });
         
         let peerConnections = {};
         let stream;
@@ -153,26 +161,27 @@ function generateSenderHTML(roomName) {
           socket.emit('broadcaster-disconnected', currentRoom);
         }
 
-        socket.on('viewer-connected', (viewerId) => {
+        socket.on('viewer-connected',  (viewerId) => {
           console.log("Visualizador conectado: " + viewerId);
           viewerCountEl.textContent = Object.keys(peerConnections).length + " visualizadores";
           
           if (!stream) return;
+
+         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then(stream => {
+    console.log("🎥 Permissão concedida.");
+  })
+  .catch(err => {
+    console.warn("🚫 Permissão negada:", err);
+    alert("Por favor, permita acesso à câmera e microfone para continuar.");
+  });
+
+// Saving the response in the iceServers array
           
           const peerConnection = new RTCPeerConnection({
            
-            iceServers: [  
-            
-          
-    
-      {
-        urls: "turn:relay1.expressturn.com:3478",
-        username: "efS8B4ILUA76O6XJJF",
-        credential: "lX89RTLsl9wxmFwU"
-      }
-
-  
-            ]
+              iceServers: iceServers,
+            iceTransportPolicy: "relay"
           });
 
 
@@ -272,6 +281,14 @@ function generateViewerHTML(roomName) {
           const videoEl = document.getElementById('remoteVideo');
           const roomInfoEl = document.getElementById('roomInfo');
           const logEl = document.getElementById('logConsole');
+
+          let iceServers = [];
+
+        fetch("https://dwwdwrr.metered.live/api/v1/turn/credentials?apiKey=bf6cccced9a030e2aad51ce29d00e30cb152")
+        .then(response => response.json())
+        .then(data => {
+          iceServers = data;
+        });
   
           let peerConnection;
           const currentRoom = '${roomName}';
@@ -334,35 +351,27 @@ function generateViewerHTML(roomName) {
             }
           });
   
-          socket.on('no-broadcaster', (room) => {
+          socket.on('no-broadcaster',  (room) => {
             if (room !== currentRoom) return;
             logToScreen("🚫 Nenhum transmissor ativo na sala");
             statusEl.textContent = "Nenhum transmissor ativo na sala: " + room;
             statusEl.className = "disconnected";
           });
-  
+
           function setupPeerConnection() {
+          navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then(stream => {
+    console.log("🎥 Permissão concedida.");
+  })
+  .catch(err => {
+    console.warn("🚫 Permissão negada:", err);
+    alert("Por favor, permita acesso à câmera e microfone para continuar.");
+  });
+
             peerConnection = new RTCPeerConnection({
              
-              iceServers: [
-        
-
-            
-        {
-        urls: "turn:relay1.expressturn.com:3478",
-        username: "efS8B4ILUA76O6XJJF",
-        credential: "lX89RTLsl9wxmFwU"
-      }
-
-
-
-
-
-      
-  
-               
-                 
-              ]
+              iceServers: iceServers,
+              iceTransportPolicy: "relay"
             });
 
 peerConnection.addTransceiver("video", {
