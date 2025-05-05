@@ -202,15 +202,20 @@ peerConnection.addTransceiver("video", {
             }
           };
 
-          peerConnection.createOffer()
-            .then(offer => peerConnection.setLocalDescription(offer))
-            .then(() => {
+        
+
+            pc.onnegotiationneeded = async () => {
+              alert('dwwd)
+              const offer = await viewer.peerConnection.createOffer();
+              await viewer.peerConnection.setLocalDescription(offer);
               socket.emit('offer', {
                 viewerId,
                 offer: peerConnection.localDescription,
                 room: currentRoom
               });
-            });
+          };
+
+            
         });
 
         socket.on('answer', ({ viewerId, answer }) => {
