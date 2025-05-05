@@ -163,12 +163,29 @@ function generateSenderHTML(roomName) {
          
             iceServers: [  
             
-              { urls: "stun:stun.l.google.com:19302" },
-  {
-   urls: "turn:global.turn.tectonic.video:443?transport=tcp",
-    username: "public",
-    credential: "webrtc"
-  },
+            {
+        urls: "stun:stun.relay.metered.ca:80",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:80",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:80?transport=tcp",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:443",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turns:global.relay.metered.ca:443?transport=tcp",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      }
   
             ]
           });
@@ -345,12 +362,29 @@ function generateViewerHTML(roomName) {
               iceServers: [
         
 
-        { urls: "stun:stun.l.google.com:19302" },
-  {
-     urls: "turn:global.turn.tectonic.video:443?transport=tcp",
-    username: "public",
-    credential: "webrtc"
-  },
+             {
+        urls: "stun:stun.relay.metered.ca:80",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:80",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:80?transport=tcp",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turn:global.relay.metered.ca:443",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      },
+      {
+        urls: "turns:global.relay.metered.ca:443?transport=tcp",
+        username: "369394507cc1094c0f286ffc",
+        credential: "tHrk+fKIBAWlrfW6",
+      }
   
                
                  
