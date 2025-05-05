@@ -160,6 +160,7 @@ function generateSenderHTML(roomName) {
           if (!stream) return;
           
           const peerConnection = new RTCPeerConnection({
+          iceTransportPolicy: "relay", 
             iceServers: [  
              {
                urls: "turn:relay1.expressturn.com:3478?transport=tcp",
@@ -337,6 +338,7 @@ function generateViewerHTML(roomName) {
   
           function setupPeerConnection() {
             peerConnection = new RTCPeerConnection({
+              iceTransportPolicy: "relay", 
               iceServers: [
                 {
              urls: "turn:relay1.expressturn.com:3478?transport=tcp",
@@ -346,7 +348,7 @@ function generateViewerHTML(roomName) {
                
                  
               ],
-               iceTransportPolicy: "all", 
+               
   bundlePolicy: "max-bundle",
   rtcpMuxPolicy: "require"
             });
