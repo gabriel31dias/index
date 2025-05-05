@@ -165,15 +165,11 @@ function generateSenderHTML(roomName) {
             
               { urls: "stun:stun.l.google.com:19302" },
   {
-    urls: "turn:relay1.expressturn.com:443?transport=tcp",
-    username: "efS8B4ILUA76O6XJJF",
-    credential: "lX89RTLsl9wxmFwU"
+   urls: "turn:global.turn.tectonic.video:443?transport=tcp",
+    username: "public",
+    credential: "webrtc"
   },
-  {
-    urls: "turn:relay1.expressturn.com:80?transport=tcp",
-    username: "efS8B4ILUA76O6XJJF",
-    credential: "lX89RTLsl9wxmFwU"
-  }
+  
             ]
           });
 
@@ -351,15 +347,11 @@ function generateViewerHTML(roomName) {
 
         { urls: "stun:stun.l.google.com:19302" },
   {
-    urls: "turn:relay1.expressturn.com:443?transport=tcp",
-    username: "efS8B4ILUA76O6XJJF",
-    credential: "lX89RTLsl9wxmFwU"
+     urls: "turn:global.turn.tectonic.video:443?transport=tcp",
+    username: "public",
+    credential: "webrtc"
   },
-  {
-    urls: "turn:relay1.expressturn.com:80?transport=tcp",
-    username: "efS8B4ILUA76O6XJJF",
-    credential: "lX89RTLsl9wxmFwU"
-  }
+  
                
                  
               ],
