@@ -271,7 +271,7 @@ function generateViewerHTML(roomName) {
         <h1>Visualizador</h1>
         <div id="roomInfo">Conectando à sala: ${roomName}</div>
         <div id="status">Aguardando transmissão...</div>
-        <div id="video-container"></div>
+        <video id="remoteVideo" autoplay playsinline muted></video>
         <div id="logConsole">[LOGS]</div>
   
         <script src="/socket.io/socket.io.js"></script>
@@ -283,23 +283,6 @@ function generateViewerHTML(roomName) {
           const logEl = document.getElementById('logConsole');
 
           let iceServers = [];
-const videoContainer = document.getElementById("video-container");
-
-
-function addVideoStream(container, stream, userId) {
-  if (document.getElementById(userId)) {
-    document.getElementById(userId).srcObject = stream;
-  } else {
-    const video = document.createElement("video");
-    video.srcObject = stream;
-    video.id = userId;
-    video.autoplay = true;
-    container.appendChild(video);
-    const p = document.createElement("p");
-    p.innerHTML = userId;
-    container.appendChild(p);
-  }
-}
 
         fetch("https://dwwdwrr.metered.live/api/v1/turn/credentials?apiKey=bf6cccced9a030e2aad51ce29d00e30cb152")
         .then(response => response.json())
@@ -388,7 +371,7 @@ function addVideoStream(container, stream, userId) {
             peerConnection = new RTCPeerConnection({
              
               iceServers: iceServers,
-              iceTransportPolicy: "relay",
+              
             });
 
 peerConnection.addTransceiver("video", {
@@ -400,7 +383,7 @@ peerConnection.addTransceiver("video", {
             peerConnection.ontrack = (event) => {
               logToScreen("🎥 ontrack recebido");
               if (event.streams && event.streams[0]) {
-              addVideoStream(videoContainer, event.streams[0], 'dwdwwd');
+              
                 videoEl.srcObject = event.streams[0];
                 videoEl.play().catch((err) => {
                   logToScreen("🔈 Erro no autoplay: " + err);
