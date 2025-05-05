@@ -160,32 +160,17 @@ function generateSenderHTML(roomName) {
           if (!stream) return;
           
           const peerConnection = new RTCPeerConnection({
-            iceTransportPolicy: "relay", 
+           
             iceServers: [  
             
-            {
-        urls: "stun:stun.relay.metered.ca:80",
-      },
+          
+    
       {
-        urls: "turn:global.relay.metered.ca:80",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turn:global.relay.metered.ca:80?transport=tcp",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turn:global.relay.metered.ca:443",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turns:global.relay.metered.ca:443?transport=tcp",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
+        urls: "turn:relay1.expressturn.com:3478",
+        username: "efS8B4ILUA76O6XJJF",
+        credential: "lX89RTLsl9wxmFwU"
       }
+
   
             ]
           });
@@ -358,40 +343,26 @@ function generateViewerHTML(roomName) {
   
           function setupPeerConnection() {
             peerConnection = new RTCPeerConnection({
-              iceTransportPolicy: "relay", 
+             
               iceServers: [
         
 
-             {
-        urls: "stun:stun.relay.metered.ca:80",
-      },
-      {
-        urls: "turn:global.relay.metered.ca:80",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turn:global.relay.metered.ca:80?transport=tcp",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turn:global.relay.metered.ca:443",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
-      },
-      {
-        urls: "turns:global.relay.metered.ca:443?transport=tcp",
-        username: "369394507cc1094c0f286ffc",
-        credential: "tHrk+fKIBAWlrfW6",
+            
+        {
+        urls: "turn:relay1.expressturn.com:3478",
+        username: "efS8B4ILUA76O6XJJF",
+        credential: "lX89RTLsl9wxmFwU"
       }
+
+
+
+
+
+      
   
                
                  
-              ],
-               
-  bundlePolicy: "max-bundle",
-  rtcpMuxPolicy: "require"
+              ]
             });
 
 peerConnection.addTransceiver("video", {
