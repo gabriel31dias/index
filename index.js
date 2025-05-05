@@ -179,7 +179,7 @@ function generateSenderHTML(roomName) {
 // Saving the response in the iceServers array
           
           const peerConnection = new RTCPeerConnection({
-            iceTransportPolicy: "relay",
+          
               iceServers: iceServers,
           
           });
