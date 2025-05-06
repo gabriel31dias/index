@@ -167,14 +167,7 @@ function generateSenderHTML(roomName) {
           
           if (!stream) return;
 
-         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-  .then(stream => {
-    console.log("🎥 Permissão concedida.");
-  })
-  .catch(err => {
-    console.warn("🚫 Permissão negada:", err);
-    alert("Por favor, permita acesso à câmera e microfone para continuar.");
-  });
+       
 
 // Saving the response in the iceServers array
           
@@ -186,9 +179,8 @@ function generateSenderHTML(roomName) {
 
 
 peerConnection.addTransceiver("video", {
-    direction: "sendrecv",
-    codecs: ["VP8", "H264"] // Prioriza codecs suportados no Android
-  });
+  direction: "sendrecv"
+});
 
           peerConnections[viewerId] = peerConnection;
 
@@ -359,14 +351,7 @@ function generateViewerHTML(roomName) {
           });
 
           function setupPeerConnection() {
-          navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-  .then(stream => {
-    console.log("🎥 Permissão concedida.");
-  })
-  .catch(err => {
-    console.warn("🚫 Permissão negada:", err);
-    alert("Por favor, permita acesso à câmera e microfone para continuar.");
-  });
+        
 
             peerConnection = new RTCPeerConnection({
              
@@ -375,8 +360,7 @@ function generateViewerHTML(roomName) {
             });
 
 peerConnection.addTransceiver("video", {
-  direction: "sendrecv",
-  codecs: ["VP8", "H264"] // Prioriza codecs suportados no Android
+  direction: "sendrecv"
 });
 
   
