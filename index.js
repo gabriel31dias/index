@@ -383,6 +383,7 @@ peerConnection.addTransceiver("video", {
             };
 
             peerConnection.icecandidateerror = (error) => {
+              alert(JSON.stringify(error))
               logToScreen("🔄 ICE candidate error: " + error);
             };
   
